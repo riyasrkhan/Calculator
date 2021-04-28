@@ -6,16 +6,23 @@ class Calculator {
     subtractionbtn:any;
     multiplicationbtn:any;
     calculateValue:any;
+    sinValue:any;
+    cosValue:any;
+    tanValue:any;
     constructor() {
         this.firstvalue = document.getElementById("first") as HTMLInputElement;
         this.secondvalue = document.getElementById("second") as HTMLInputElement;
         this.finalvalue = document.getElementById("displayvalue") as HTMLSpanElement;
+        this.sinValue = document.getElementById("sinvalue") as HTMLSpanElement;
+        this.cosValue = document.getElementById("cosvalue") as HTMLSpanElement;
+        this.tanValue = document.getElementById("tanvalue") as HTMLSpanElement;
         this.additionbtn = document.getElementById("addition");
         this.additionbtn.addEventListener("click", (e:Event) => this.calculation('add'));
         this.subtractionbtn = document.getElementById("subtraction");
         this.subtractionbtn.addEventListener("click", (e:Event) => this.calculation('sub'));
         this.multiplicationbtn = document.getElementById("multiplication");
         this.multiplicationbtn.addEventListener("click", (e:Event) => this.calculation('multi'));
+        
       }
 
     calculation(value:any){
@@ -28,10 +35,20 @@ class Calculator {
         }else if(value == 'multi'){
             this.calculateValue = parseInt(first_value) * parseInt(second_value);
         }
-        
-        console.log(this.calculateValue)
+        this.Sin(this.calculateValue);
+        this.Cos(this.calculateValue);
+        this.Tan(this.calculateValue);
         this.finalvalue.innerHTML = this.calculateValue.toString();
     }
+    Sin(num: number) {  
+        this.sinValue.innerText = "The sin value of " + num + " is -> " + Math.sin(num) + "\n"; 
+    }  
+    Cos(num: number) {  
+        this.cosValue.innerText = "The cos of " + num + " is -> " + Math.cos(num) + "\n";  
+    }  
+    Tan(num: number) {  
+        this.tanValue.innerText = "The tan value of " + num + " is -> " + Math.tan(num);  
+    } 
 
 
 }
